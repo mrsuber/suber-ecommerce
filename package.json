@@ -1,0 +1,49 @@
+{
+  "name": "ecomerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:dev": "nodemon server.js",
+    "client-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/velte-tech/hohchurch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/velte-tech/hohchurch/issues"
+  },
+  "homepage": "https://github.com/velte-tech/hohchurch#readme",
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "bcrypt": "^5.0.1",
+    "chart.js": "^3.9.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.6.0",
+    "fs-extra": "^11.1.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.5.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.7.8",
+    "react-chartjs-2": "^4.3.1",
+    "sharp": "^0.31.2",
+    "strip": "^3.0.0",
+    "stripe": "^10.17.0",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
