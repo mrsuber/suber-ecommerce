@@ -8,7 +8,7 @@ const cookieParser = require('cookie-parser')
 const path = require('path')
 const bodyParser = require('body-parser');
 const globalErrorHandler = require('./backend/controller/errorController');
-
+const data = require('./data/Products')
 
 const app = express();
 
@@ -45,7 +45,15 @@ if(process.env.NODE_ENV==="production"){
   // app.get('/reset-password',(req,res)=>{res.sendFile(path.join(__dirname,'client','build','index.html'))})
   // app.get('/verify',(req,res)=>{res.sendFile(path.join(__dirname,'client','build','index.html'))})
   app.get('/',(req,res)=>{res.sendFile(path.join(__dirname,'client','build','index.html'))})
-  
+  //LOAD PRODUCTS FORM SERVER
+  // app.get('/api/products', (req,res)=>{
+  //   res.json(data)
+  // })
+  //SIGLE PRODUCT FORM SERVER
+  // app.get('/api/products/:id', (req,res)=>{
+  //   const product = data.find((p) => p._id === req.params.id)
+  //   res.json(product)
+  // })
 }else{
   // on development
   app.use('public/uploads', express.static(path.join(__dirname, 'public/uploads')))
@@ -57,10 +65,13 @@ if(process.env.NODE_ENV==="production"){
 
 
 //routes
+
 app.use('/api', require('./backend/routes/authRouter'))
 app.use('/api', require('./backend/routes/userRouter'))
+app.use('/api', require('./backend/routes/normalgetRoute'))
 
-
+app.use('/api', require('./backend/routes/productCategoryRoutes'))
+app.use('/api', require('./backend/routes/productRoutes'))
 // Use Error Handler
 app.use(globalErrorHandler);
 

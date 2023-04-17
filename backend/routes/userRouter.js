@@ -6,19 +6,20 @@ const fileUpload = require('../helpers/filehelper');
 
 
 
-router.use(auth);
+// router.use(auth);
 
 router.patch('/updateMe', 
+  auth,
   fileUpload.uploadUserImage,
   fileUpload.resizeUserPhoto,
   userController.updateMe
 );
 
-router.get('/users', userCtrl.getAllUsers) 
-router.get('/search',  userCtrl.searchUser) 
-router.get('/user/:id',  userCtrl.getUser) 
-router.patch('/user', userCtrl.updateUser) 
-router.delete('/delete-user', authorize('admin', 'superadmin'), userCtrl.deleteUser);
+router.get('/users', auth,userCtrl.getAllUsers) 
+router.get('/search', auth, userCtrl.searchUser) 
+router.get('/user/:id', auth, userCtrl.getUser) 
+router.patch('/user', auth,userCtrl.updateUser) 
+router.delete('/delete-user',auth, authorize('admin', 'superadmin'), userCtrl.deleteUser);
 
 router.patch('/assign-role', auth, authorize('superadmin') , userController.assignRole);
 
